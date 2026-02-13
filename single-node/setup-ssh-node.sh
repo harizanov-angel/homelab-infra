@@ -4,10 +4,10 @@ set -euo pipefail
 # Configure SSH key-based access from this machine to a node.
 #
 # Usage:
-#   ./scripts/setup-ssh-node.sh <node_host> <node_user> [ssh_port] [key_name]
+#   ./setup-ssh-node.sh <node_host> <node_user> [ssh_port] [key_name]
 #
 # Example:
-#   ./scripts/setup-ssh-node.sh yoga-node angel 22 yoga-node
+#   ./setup-ssh-node.sh yoga-node angel 22 yoga-node
 
 NODE_HOST="${1:-}"
 NODE_USER="${2:-}"
@@ -113,7 +113,7 @@ Next:
    ssh -i "${KEY_PATH}" -p "${SSH_PORT}" "${NODE_USER}@${NODE_HOST}"
 
 2) Run remote bootstrap:
-   KEY_PATH="${KEY_PATH}" ./scripts/run-remote-bootstrap.sh "${NODE_HOST}" "${NODE_USER}" "${SSH_PORT}"
+   KEY_PATH="${KEY_PATH}" ./run-remote-bootstrap.sh "${NODE_HOST}" "${NODE_USER}" "${SSH_PORT}"
 EOF
 }
 
