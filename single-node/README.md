@@ -2,6 +2,32 @@
 
 Minimal flow to prepare one Ubuntu host for `kubeadm` and verify baseline node prerequisites.
 
+## Quick setup flow
+
+### 1) Set up SSH access (if you do not already have it)
+
+From this folder:
+
+```bash
+./setup-ssh.sh <hostname> <user>
+```
+
+This creates `~/.ssh/<hostname>`, installs the pubkey on the node, and adds a `Host <hostname>` entry in `~/.ssh/config` for easier ssh.
+
+### 2) Set up the node
+
+```bash
+./remote_execution.sh <hostname> <user> setup-node.sh
+```
+This will install everything you need to have this host as a k8s node.
+
+### 3) Verify installation (optional)
+
+```bash
+./remote_execution.sh <hostname> <user> verify-node-setup.sh
+```
+Make sure the node is setup correctly and is ready for a `kubectl join` or `kubectl init`.
+
 ## What is in this folder
 
 - `setup-ssh.sh` - creates/uses SSH key, installs pubkey on host, adds SSH config entry
@@ -12,6 +38,7 @@ Minimal flow to prepare one Ubuntu host for `kubeadm` and verify baseline node p
 
 ## Important caveats
 
+- These scripts are for setup of a machine only. There is not going to be a cluster running on the host afterworst. To do this check the single-node folder in the clusters repo - https://github.com/harizanov-angel/homelab-clusters.
 - SSH key naming is fixed to host-based keys:
   - private key: `~/.ssh/<hostname>`
   - public key: `~/.ssh/<hostname>.pub`
@@ -28,25 +55,3 @@ Minimal flow to prepare one Ubuntu host for `kubeadm` and verify baseline node p
 - On target host, SSH server is enabled:
   - `sudo apt update && sudo apt install -y openssh-server`
   - `sudo systemctl enable --now ssh`
-
-## 1) Set up SSH access
-
-From this folder:
-
-```bash
-./setup-ssh.sh <hostname> <user>
-```
-
-This creates `~/.ssh/<hostname>`, installs the pubkey on the host, and adds a `Host <hostname>` entry in `~/.ssh/config`.
-
-## 2) Run bootstrap from local machine
-
-```bash
-./remote_execution.sh <hostname> <user> setup-node.sh
-```
-
-## 3) Verify node prep from local machine
-
-```bash
-./remote_execution.sh <hostname> <user> verify-node-setup.sh
-```
