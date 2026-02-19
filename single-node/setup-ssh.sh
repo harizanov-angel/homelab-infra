@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Configure SSH key access to a node.
-# Usage: ./setup-ssh-node.sh <node_host> <node_user>
+# Usage: ./setup-ssh.sh <node_host> <node_user>
 
 NODE_HOST="${1:-}"
 NODE_USER="${2:-}"
