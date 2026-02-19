@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Verify baseline host prerequisites prepared by bootstrap-node.sh.
+# Verify baseline host prerequisites prepared by setup-node.sh.
 
 FAIL_COUNT=0
 pass() { echo "PASS: $*"; }
