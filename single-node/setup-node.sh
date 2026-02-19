@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Run this script directly on the target Ubuntu host.
 # Optional overrides:
-#   K8S_VERSION_SERIES=v1.32 sudo ./bootstrap-node.sh
+#   K8S_VERSION_SERIES=v1.32 sudo ./setup-node.sh
 
 K8S_VERSION_SERIES="${K8S_VERSION_SERIES:-v1.32}"
 
