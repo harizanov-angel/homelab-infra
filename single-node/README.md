@@ -50,16 +50,3 @@ This creates `~/.ssh/<hostname>`, installs the pubkey on the host, and adds a `H
 ```bash
 ./remote_execution.sh <hostname> <user> verify-node-setup.sh
 ```
-
-## 4) Initialize cluster from local machine
-
-```bash
-./remote_execution.sh <hostname> <user> ../clusters/kubeadm-based/single-node/init-cluster.sh
-```
-
-## 5) Continue with cluster checks
-
-```bash
-ssh <hostname> 'kubectl --kubeconfig=/etc/kubernetes/admin.conf get nodes -o wide'
-ssh <hostname> 'kubectl --kubeconfig=/etc/kubernetes/admin.conf get pods -A'
-```
