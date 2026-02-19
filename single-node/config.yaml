@@ -1,0 +1,2 @@
+# Single-node defaults
+k8s_version_series: v1.32
